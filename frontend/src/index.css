@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.login-page h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.login-page button {
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+}
+
+.main-page {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  flex: 1;
+  background-color: #f8f8f8;
+  padding: 1rem;
+}
+
+.queues {
+  flex: 2;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.queue {
+  width: 45%;
+}
+
+.queue h3 {
+  margin-bottom: 1rem;
+}
