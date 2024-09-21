@@ -40,11 +40,11 @@ app.use(passport.session());
 
 // Socket.IO connection
 io.on('connection', (socket) => {
-  console.log('A user connected');
+  // console.log('A user connected');
 
   // When the user disconnects
   socket.on('disconnect', () => {
-    console.log('A user disconnected');
+    // console.log('A user disconnected');
   });
 });
 
