@@ -81,13 +81,15 @@ const MainPage = () => {
         <p>{user.email}</p>
         {swappedWith ? ( // Show swapped user info if available
           <>
-            <h4>Swapped With:</h4>
-            <p>{swappedWith.name}</p>
+            <h4>You are Successfully Swapped With</h4>
+            <h3>{swappedWith.name}</h3>
             <p>{swappedWith.email}</p>
           </>
         ) : (
           <>
+            <div className="dropdowns">
             <select value={fromMess} onChange={(e) => setFromMess(e.target.value)}>
+
               <option value="A">From Mess A</option>
               <option value="B">From Mess B</option>
             </select>
@@ -95,8 +97,9 @@ const MainPage = () => {
               <option value="A">To Mess A</option>
               <option value="B">To Mess B</option>
             </select>
+            </div>
             <button onClick={applyForSwap}>Apply for Mess Swap</button>
-            {swapMessage && <p>{swapMessage}</p>}
+            {swapMessage && <h2>{swapMessage}</h2>}
           </>
         )}
       </div>
