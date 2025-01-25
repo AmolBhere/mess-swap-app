@@ -12,7 +12,7 @@ router.get('/google/callback', passport.authenticate('google', {
 }), (req, res) => {
   // After successful login, send user info as a query parameter to the frontend
   const user = req.user; // Get the authenticated user info
-  const redirectUrl = `http://localhost:5173/main?user=${encodeURIComponent(JSON.stringify(user))}`;
+  const redirectUrl = `https://mess-swap-app-frontend.onrender.com/main?user=${encodeURIComponent(JSON.stringify(user))}`;
   res.redirect(redirectUrl);
 });
 
