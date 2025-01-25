@@ -53,7 +53,7 @@ const MainPage = () => {
       setSwapMessage('Please choose different mess options for swapping.');
       return; // Prevent further execution if the check fails
     }
-
+    
     console.log('User ID:', user._id); // Debugging log to check user ID
     if (!user._id || !user._id.match(/^[0-9a-fA-F]{24}$/)) {
       setSwapMessage('Invalid user ID.');

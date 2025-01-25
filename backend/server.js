@@ -8,7 +8,6 @@ import { Server } from 'socket.io';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.js';
 import swapRoutes from './routes/swap.js';
-import SwappedUsers from './models/SwappedUsers.js';
 import './config/passport.js';
 
 dotenv.config();
@@ -55,6 +54,6 @@ mongoose.connect(process.env.MONGO_URI)
 app.use('/auth', authRoutes);
 app.use('/swap', swapRoutes(io)); // Pass the io instance to the swap routes
 
-server.listen(process.env.PORT || 5000, () => {
+server.listen(5000, () => {
   console.log('Server running on http://localhost:5000');
 });
