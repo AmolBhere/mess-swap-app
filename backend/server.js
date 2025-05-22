@@ -45,9 +45,10 @@ app.use(
       collectionName: 'sessions', // Collection name for sessions
     }),
     cookie: {
-      httpOnly: true, // Prevent client-side JavaScript from accessing the cookie
-      secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-      maxAge: 1000 * 60 * 60 * 24, // Session expires in 1 day
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+      maxAge: 1000 * 60 * 60 * 24,
     },
   })
 );
