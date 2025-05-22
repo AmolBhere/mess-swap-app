@@ -2,7 +2,7 @@ import React from 'react';
 
 const LoginPage = () => {
   const handleLogin = () => {
-    window.location.href = 'https://mess-swap-app-backend.onrender.com/auth/google';
+    window.location.href = 'http://localhost:5000/auth/google';
   };
 
   return (

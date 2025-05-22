@@ -17,7 +17,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'https://mess-swap-app-frontend.onrender.com', // Allow frontend
+    origin: 'http://localhost:5173', // Allow frontend
     methods: ['GET', 'POST'],
     credentials: true,
   },
@@ -26,7 +26,7 @@ const io = new Server(server, {
 // Middleware for CORS
 app.use(
   cors({
-    origin: 'https://mess-swap-app-frontend.onrender.com',
+    origin: 'http://localhost:5173',
     credentials: true,
   })
 );

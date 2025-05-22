@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import Queue from './Queue';
 
-const socket = io('https://mess-swap-app-backend.onrender.com', { transports: ['websocket'] });
+const socket = io('http://localhost:5000', { transports: ['websocket'] });
 
 const MainPage = () => {
   const [user, setUser] = useState({});
@@ -14,18 +14,18 @@ const MainPage = () => {
 
   useEffect(() => {
     // Fetch queue and user info on mount
-    fetch('https://mess-swap-app-backend.onrender.com/swap/queue')
+    fetch('http://localhost:5000/swap/queue')
       .then((res) => res.json())
       .then((data) => setQueue(data));
 
-    fetch('https://mess-swap-app-backend.onrender.com/auth/user', { credentials: 'include' })
+    fetch('http://localhost:5000/auth/user', { credentials: 'include' })
       .then((res) => res.json())
       .then((userData) => {
         setUser(userData);
 
         // Fetch swapped user info only if user ID is valid
         if (userData._id && userData._id.match(/^[0-9a-fA-F]{24}$/)) {
-          fetch(`https://mess-swap-app-backend.onrender.com/swap/swapped-with/${userData._id}`)
+          fetch(`http://localhost:5000/swap/swapped-with/${userData._id}`)
             .then((res) => res.json())
             .then((swappedData) => {
               if (swappedData) {
@@ -37,7 +37,7 @@ const MainPage = () => {
 
     // Listen for queue updates from the server
     socket.on('queueUpdated', () => {
-      fetch('https://mess-swap-app-backend.onrender.com/swap/queue')
+      fetch('http://localhost:5000/swap/queue')
         .then((res) => res.json())
         .then((data) => setQueue(data));
     });
@@ -60,7 +60,7 @@ const MainPage = () => {
       return;
     }
 
-    fetch('https://mess-swap-app-backend.onrender.com/swap/apply', {
+    fetch('http://localhost:5000/swap/apply', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId: user._id, fromMess, toMess }),
@@ -69,7 +69,7 @@ const MainPage = () => {
       .then((data) => {
         setSwapMessage(data.message);
         // Refresh the swapped info after applying
-        fetch(`https://mess-swap-app-backend.onrender.com/swap/swapped-with/${user._id}`)
+        fetch(`http://localhost:5000/swap/swapped-with/${user._id}`)
           .then((res) => res.json())
           .then((swappedData) => {
             if (swappedData) {

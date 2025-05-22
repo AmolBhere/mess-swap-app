@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const login = async () => {
-    window.location.href = 'https://mess-swap-app-backend.onrender.com/auth/google';
+    window.location.href = 'http://localhost:5000/auth/google';
   };
 
   const logout = async () => {
